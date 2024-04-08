@@ -4,7 +4,7 @@ from parentnode import ParentNode
 
 #TODO need some asserts for each function
 class TestParentNode(unittest.TestCase):
-    def test_only_leafnodes():
+    def test_only_leafnodes(self):
         node = ParentNode(
             "p",
             [
@@ -15,7 +15,9 @@ class TestParentNode(unittest.TestCase):
             ],
         )
 
-    def test_leafnodes_with_one_parent():
+        self.assertEqual(node.to_html, "<p><b>Bold text</b>Normal text<i>italic text</i>Normal text</p>")
+
+    def test_leafnodes_with_one_parent(self):
         node = ParentNode(
             "p",
             [
@@ -26,8 +28,10 @@ class TestParentNode(unittest.TestCase):
                 ParentNode("p",[LeafNode("b","Bold Tex"), LeafNode("i","italic text")])
             ],
         )
+        
+        self.assertEqual(node.to_html, "<p><b>Bold text</b>Normal text<i>italic text</i>Normal text<p><b>Bold text</b><i>italic text</i></p></p>")
 
-    def test_leafnodes_with_two_parents():
+    def test_leafnodes_with_two_parents(self):
         node = ParentNode(
             "p",
             [
@@ -39,8 +43,9 @@ class TestParentNode(unittest.TestCase):
                 ParentNode("p",[LeafNode("b","Bold Tex"), LeafNode("i","italic text")])
             ],
         )
+        self.assertEqual(node.to_html, "<p><b>Bold text</b>Normal text<i>italic text</i>Normal text<p><b>Bold text</b><i>italic text</i></p><p><b>Bold text</b><i>italic text</i></p></p>")
 
-    def test_leafnodes_with_a_parent_with_a_parent():
+    def test_leafnodes_with_a_parent_with_a_parent(self):
         node = ParentNode(
             "p",
             [
@@ -51,9 +56,10 @@ class TestParentNode(unittest.TestCase):
                 ParentNode("p",[LeafNode("b","Bold Tex"), LeafNode("i","italic text"), ParentNode("p",[LeafNode("b","Bold Tex"), LeafNode("i","italic text")])]),
             ],
         )
+        self.assertEqual(node.to_html, "<p><b>Bold text</b>Normal text<i>italic text</i>Normal text<p><b>Bold text</b><i>italic text</i><p><b>Bold text</b><i>italic text</i></p></p></p>")
          
 
-    def test_parent_without_tag_choiced():
+    def test_parent_without_tag_choiced(self):
         node = ParentNode(
             children=[
                 LeafNode("b", "Bold text"),
@@ -64,7 +70,9 @@ class TestParentNode(unittest.TestCase):
             ],
         )
 
-    def test_parent_without_tag_none():
+        raise Exception()
+
+    def test_parent_without_tag_none(self):
         node = ParentNode(
             None,
             [
@@ -76,7 +84,9 @@ class TestParentNode(unittest.TestCase):
             ],
         )
 
-    def test_parent_without_tag_empty_string():
+        raise Exception()
+
+    def test_parent_without_tag_empty_string(self):
         node = ParentNode(
             "",
             [
@@ -88,8 +98,12 @@ class TestParentNode(unittest.TestCase):
             ],
         )
 
-    def test_parent_without_childern_not_choiced():
-            node = ParentNode("p")
+        raise Exception()
 
-    def test_parent_without_childern_empty_list():
-            node = ParentNode("p",[])
+    def test_parent_without_childern_not_choiced(self):
+        node = ParentNode("p")
+        raise Exception()
+
+    def test_parent_without_childern_empty_list(self):
+        node = ParentNode("p",[])
+        raise Exception()
