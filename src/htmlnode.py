@@ -1,5 +1,3 @@
-from textnode import TextNode
-
 class HTMLNode:
     # tag - A string representing the HTML tag name (e.g. "p", "a", "h1", etc.)
     # value - A string representing the value of the HTML tag (e.g. the text inside a paragraph)
@@ -14,22 +12,6 @@ class HTMLNode:
     
     def to_html(self):
         raise NotImplementedError()
-    
-    def text_node_to_html_node(text_node : TextNode):
-        match text_node.text_type:
-            case "text":
-                pass
-            case "bold":
-                pass
-            case "italic":
-                pass
-            case "code":
-                pass
-            case "link":
-                pass
-            case "image":
-                pass
-
     
     def props_to_html(self):
         prop_string = ""

@@ -3,19 +3,13 @@ from leafnode import LeafNode
 from parentnode import ParentNode
 
 def main():
-    node = ParentNode(
-        "p",
-        [
-            LeafNode("b", "Bold text"),
-            LeafNode(None, "Normal text"),
-            LeafNode("i", "italic text"),
-            LeafNode(None, "Normal text"),
-            ParentNode("p",[LeafNode("b","Bold Tex"), LeafNode("i","italic text"),ParentNode("p",[LeafNode("b","Bold Tex"), LeafNode("i","italic text")])])
-        ],
-    )
 
-    print(node.to_html())
+    textHtml = TextNode("Test","code")
+    textgoogle = TextNode("google", "link", "google.com")
 
+    print(textHtml.text_node_to_html_node())
+    
+    print(textgoogle.text_node_to_html_node())
    
     
 main()
